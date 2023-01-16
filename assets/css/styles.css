@@ -425,8 +425,8 @@ img {
 
 .about__description {
   text-align: justify;
-  /* margin-bottom: var(--mb-2-5); */
   font-size: var(--small-font-size);
+  /* margin-bottom: var(--mb-2-5); */
 }
 
 .about__info {
