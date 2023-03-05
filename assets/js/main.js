@@ -114,26 +114,37 @@ let swiperPortfolio = new Swiper(".swiper-container", {
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav__menu a[href^='#']:not([href='#'])");
 
 function scrollActive() {
   const scrollY = window.pageYOffset;
+  const navHeight = document.querySelector("nav").offsetHeight;
 
   sections.forEach((current) => {
     const sectionHeight = current.offsetHeight;
-    const sectionTop = current.offsetTop - 70;
-    sectionId = current.getAttribute("id");
+    const sectionTop = current.offsetTop - navHeight;
+    let sectionId = current.getAttribute("id");
 
     if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.add("active-link");
+      try {
+        document
+          .querySelector(".nav__menu a[href='#" + sectionId + "']")
+          .classList.add("active-link");
+      } catch (error) {
+        console.error(error);
+      }
     } else {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.remove("active-link");
+      try {
+        document
+          .querySelector(".nav__menu a[href='#" + sectionId + "']")
+          .classList.remove("active-link");
+      } catch (error) {
+        console.error(error);
+      }
     }
   });
 }
+
 window.addEventListener("scroll", scrollActive);
 
 /*==================== CHANGE BACKGROUND HEADER ====================*/
@@ -189,4 +200,43 @@ themeButton.addEventListener("click", () => {
   // We save the theme and the current icon that the user chose
   localStorage.setItem("selected-theme", getCurrentTheme());
   localStorage.setItem("selected-icon", getCurrentIcon());
+});
+
+// Scroll behavior
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll(".nav__menu a[href^='#']:not([href='#'])");
+  const navbar = document.querySelector(".nav__menu");
+  const navbarHeight = navbar.offsetHeight;
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", event => {
+      event.preventDefault();
+      const sectionId = link.getAttribute("href").substring(1);
+      const targetSection = document.getElementById(sectionId);
+      const targetSectionTop = targetSection.getBoundingClientRect().top + window.pageYOffset;
+      const scrollDistance = targetSectionTop - navbarHeight;
+      const scrollDuration = 400;
+
+      function animateScroll(currentTime) {
+        const elapsedTime = currentTime - startTime;
+        const scrollPosition = easeInOut(elapsedTime, startScroll, scrollDistance - startScroll, scrollDuration);
+        window.scrollTo(0, scrollPosition);
+
+        if (elapsedTime < scrollDuration) {
+          requestAnimationFrame(animateScroll);
+        }
+      }
+
+      function easeInOut(t, b, c, d) {
+        t /= d / 20;
+        if (t < 1) return c / 20 * t * t + b;
+        t--;
+        return -c / 20 * (t * (t - 20) - 10) + b;
+      }
+
+      const startTime = performance.now();
+      const startScroll = window.pageYOffset;
+      requestAnimationFrame(animateScroll);
+    });
+  });
 });
