@@ -112,23 +112,6 @@ let swiperPortfolio = new Swiper(".swiper-container", {
   },
 });
 
-swiperPortfolio.params.grabCursor = false;
-swiperPortfolio.initialize();
-
-var swiperContainer = document.querySelector('.swiper-container');
-
-swiperContainer.addEventListener('mousedown', function (event) {
-  event.preventDefault();
-});
-
-swiperContainer.addEventListener('touchstart', function (event) {
-  event.preventDefault();
-});
-
-swiperContainer.addEventListener('wheel', function (event) {
-  event.preventDefault();
-});
-
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll("section[id]");
 

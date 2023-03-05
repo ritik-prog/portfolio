@@ -1370,12 +1370,3 @@ img {
     height: 237px;
   }
 }
-
-.swiper-container {
-  touch-action: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: default !important;
-}
