@@ -41,15 +41,10 @@ function toggleSkills() {
 
   for (i = 0; i < skillsContent.length; i++) {
     skillsContent[i].className = "skills__content skills__close";
-    const skillsList = skillsContent[i].querySelector(".skills__list");
-    skillsList.classList.remove("animate__animated", "animate__jackInTheBox");
   }
 
   if (this.parentNode.className === "skills__content skills__close") {
     this.parentNode.className = "skills__content skills__open";
-    const skillsList = this.parentNode.querySelector(".skills__list");
-    skillsList.classList.remove("skills__close");
-    skillsList.classList.add("animate__animated", "animate__jackInTheBox");
   }
 }
 
