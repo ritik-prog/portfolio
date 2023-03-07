@@ -560,6 +560,33 @@ img {
   transition: 1s;
 }
 
+.skills__list {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+
+.skills__open .skills__arrow {
+  transform: rotate(-180deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+.skills__close .skills__arrow {
+  transform: rotate(0deg);
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Animation */
+
+.skills__open .skills__list {
+  max-height: 500px; /* Change the value as per your requirement */
+  /* transition: max-height 1s ease-in; */
+}
+
+.hidden{
+  display: none;
+}
+
 /*==================== QUALIFICATION ====================*/
 .qualification__tabs {
   display: flex;
@@ -1154,12 +1181,16 @@ img {
   }
 
   .about__container,
-  .skills__container,
   .portfolio__content,
   .project__container,
   .contact__container,
   .footer__container {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .skills__container {
+    grid-template-columns: repeat(1, 1fr);
+    max-width: 500px;
   }
 
   .qualification__sections {
