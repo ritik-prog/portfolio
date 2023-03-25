@@ -583,7 +583,7 @@ img {
   /* transition: max-height 1s ease-in; */
 }
 
-.hidden{
+.hidden {
   display: none;
 }
 
@@ -1059,8 +1059,8 @@ img {
   bottom: 5rem;
 }
 
-/*========== call ==========*/
-.scrollcall {
+/*========== SCROLL UP ==========*/
+.cloud {
   position: fixed;
   left: 1rem;
   bottom: -20%;
@@ -1070,19 +1070,17 @@ img {
   border-radius: 0.4rem;
   z-index: var(--z-tooltip);
   transition: 0.4s;
+  color: #fff;
+  /* font-size: 1.5rem; */
+  padding: 8px;
 }
 
-.scrollcall:hover {
+.cloud:hover {
   background-color: var(--first-color-alt);
 }
 
-.scrollup__icon {
-  font-size: 1.5rem;
-  color: #fff;
-}
-
-/* Show scroll */
-.show-scroll {
+/* Show cloud */
+.show-cloud {
   bottom: 5rem;
 }
 

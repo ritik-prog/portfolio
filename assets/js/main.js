@@ -162,6 +162,11 @@ function scrollTop() {
   // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
   if (this.scrollY >= 560) scrollTop.classList.add("show-scroll");
   else scrollTop.classList.remove("show-scroll");
+
+  const cloudTop = document.getElementById("cloud-icon");
+  // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
+  if (this.scrollY >= 560) cloudTop.classList.add("show-cloud");
+  else cloudTop.classList.remove("show-cloud");
 }
 window.addEventListener("scroll", scrollTop);
 
