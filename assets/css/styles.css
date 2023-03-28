@@ -1407,3 +1407,8 @@ img {
   bottom: -2.5rem !important;
   top: auto !important;
 }
+
+i:hover {
+  transform: scale(1.15);
+  box-shadow: none;
+}
